@@ -8,6 +8,8 @@
     android:background="#EF424A8C"
     tools:context=".MainActivity">
 
+
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/vgd1"
         android:layout_width="wrap_content"

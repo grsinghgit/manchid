@@ -44,5 +44,7 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     implementation(libs.core)
+    implementation("com.airbnb.android:lottie:6.0.0")
+    implementation("com.google.android.material:material:1.11.0")
 
 }
