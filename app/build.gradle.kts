@@ -47,4 +47,7 @@ dependencies {
     implementation("com.airbnb.android:lottie:6.0.0")
     implementation("com.google.android.material:material:1.11.0")
 
+    // Material Components (older but stable version)
+
+
 }
