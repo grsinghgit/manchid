@@ -1,12 +1,30 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
 }
 
 android {
     namespace = "com.gr.manchid"
-    compileSdk {
-        version = release(36)
+    compileSdk = 36
+
+    kotlinOptions {
+        jvmTarget = "11"
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     defaultConfig {
         applicationId = "com.gr.manchid"
