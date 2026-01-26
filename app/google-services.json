@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "475645730619",
+    "project_id": "mymanchid",
+    "storage_bucket": "mymanchid.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:475645730619:android:c4a907719e5e1549b9611e",
+        "android_client_info": {
+          "package_name": "com.gr.manchid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "475645730619-2kpbr8o9pg31m1bijqm4os0b3snulilf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gr.manchid",
+            "certificate_hash": "e177f35bbc2756e5ca102aac56543182d5d9a9cb"
+          }
+        },
+        {
+          "client_id": "475645730619-7pt9u3nti1pr9fdpuja699pqbpi8s8on.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1geiHJXPslKpYHrGuxk9Bq5JxdIA-U0w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "475645730619-7pt9u3nti1pr9fdpuja699pqbpi8s8on.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

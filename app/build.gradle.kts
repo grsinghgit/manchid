@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -64,6 +65,20 @@ dependencies {
     implementation(libs.core)
     implementation("com.airbnb.android:lottie:6.0.0")
     implementation("com.google.android.material:material:1.11.0")
+
+
+    // Firebase BOM (version control yahin se)
+    implementation(platform("com.google.firebase:firebase-bom:33.5.1"))
+
+    // Firebase services (jo use karoge wahi rakho)
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.firebase:firebase-firestore")
+
+    // Optional (agar chaho)
+     implementation("com.google.firebase:firebase-database")
+    // 🔑 Google Sign-In
+    implementation("com.google.android.gms:play-services-auth:21.1.1")
 
     // Material Components (older but stable version)
 
