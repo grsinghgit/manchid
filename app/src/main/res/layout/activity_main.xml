@@ -451,11 +451,11 @@
                     app:counterEnabled="true">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etEventId"
+                        android:id="@+id/mymanchidtxt"
                         android:layout_width="match_parent"
                         android:layout_height="56dp"
-                        android:inputType="number"
-                        android:maxLength="15"
+                        android:inputType="text"
+                        android:maxLength="95"
                         android:textColor="#FFFFFF"
                         android:textSize="16sp"
                         android:paddingStart="16dp"
@@ -491,7 +491,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Copyright 2024 MyManch | GR Karai"
+                android:text="Copyright 2024 MyManch | GR Kararwai"
                 android:textColor="#80FFFFFF"
                 android:textSize="12sp"
                 android:layout_marginBottom="12dp"/>

@@ -10,10 +10,12 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.FirebaseApp
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.gr.manchid.utils.AuthManager
 import com.gr.manchid.utils.CheckUserManager
+import com.gr.manchid.utils.MyVar
 
 class MainActivity : AppCompatActivity() {
     lateinit var manageeventbtn: Button
@@ -37,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         manageeventbtn = findViewById<Button>(R.id.btnManageEvents)
 
         manageeventbtn.setOnClickListener {
-            val intent = Intent(this, MainActivity2::class.java)
+            val intent = Intent(this, MainActivity3::class.java)
             startActivity(intent)
         }
         // third activity
@@ -60,15 +62,39 @@ class MainActivity : AppCompatActivity() {
         // checkuser private function call which is defined in last has all logic visibility
         checkUser()
 
+
+        //
+        //myVar data class data set
+        val manchidtxt = findViewById<TextInputEditText>(R.id.mymanchidtxt)
+
+
+
+        //intent second activity go
         // second activity
         val button2 = findViewById<Button>(R.id.btnSubmitEventId)
 
         button2.setOnClickListener {
-            val intent = Intent(this, MainActivity3::class.java)
+
+          val mymid =  manchidtxt.text?.toString()?.trim() ?: ""
+
+            // 1 Data class ka object banao
+            val myVar = MyVar(
+                yturl = mymid,
+                price = 120
+            )
+
+
+
+
+            val intent = Intent(this, MainActivity2::class.java)
+
+            intent.putExtra("MY_DATA", myVar)
+
             startActivity(intent)
         }
-        //
-        //
+
+
+
 
 
 

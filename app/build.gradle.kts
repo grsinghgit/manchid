@@ -2,15 +2,21 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("com.google.gms.google-services")
+    id("kotlin-parcelize")
+
 }
 
 android {
     namespace = "com.gr.manchid"
     compileSdk = 36
 
+
+
     kotlinOptions {
         jvmTarget = "11"
     }
+
+
 
 
 
@@ -50,7 +56,13 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
+
+
+
 }
+
+
 
 dependencies {
     implementation(libs.androidx.core.ktx)
