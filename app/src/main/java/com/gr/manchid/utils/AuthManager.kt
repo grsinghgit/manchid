@@ -52,8 +52,15 @@ object AuthManager {
         try {
             val account = task.getResult(ApiException::class.java)
             firebaseAuthWithGoogle(account.idToken!!, onSuccess, onFailure)
-        } catch (e: Exception) {
-            onFailure(e.localizedMessage ?: "Google Sign-In Failed")
+        } catch (e: ApiException) {
+            if (e.statusCode == 12501) {
+                // 👈 USER CANCELLED → no toast needed
+                onFailure("")   // empty message
+            }
+           else {
+                onFailure("")
+                onFailure(e.localizedMessage ?: "Google Sign-In Failed")
+            }
         }
     }
 
