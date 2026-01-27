@@ -18,6 +18,8 @@ import com.gr.manchid.utils.CheckUserManager
 class MainActivity : AppCompatActivity() {
     lateinit var manageeventbtn: Button
     lateinit var registerbtn: Button
+    lateinit var signOutBtn: Button
+
 
 
 
@@ -45,6 +47,15 @@ class MainActivity : AppCompatActivity() {
         registerbtn.setOnClickListener {
             AuthManager.signIn(this)
         }
+
+        // signout btn
+        signOutBtn = findViewById<Button>(R.id.btnSignOut)
+        signOutBtn.setOnClickListener {
+            AuthManager.logout()
+            Toast.makeText(this, "Signed out", Toast.LENGTH_SHORT).show()
+            checkUser()   // 🔄 UI refresh
+        }
+
 
         // checkuser private function call which is defined in last has all logic visibility
         checkUser()
@@ -117,10 +128,12 @@ class MainActivity : AppCompatActivity() {
 
             if (isLoggedIn) {
                 manageeventbtn.visibility = View.VISIBLE
+                signOutBtn.visibility = View.VISIBLE
                 registerbtn.visibility = View.GONE
             } else {
                 manageeventbtn.visibility = View.GONE
                 registerbtn.visibility = View.VISIBLE
+                signOutBtn.visibility = View.GONE
             }
         }
 
