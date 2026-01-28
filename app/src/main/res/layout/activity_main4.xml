@@ -1,187 +1,196 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:id="@+id/main"
     android:layout_height="match_parent"
-    android:background="#0F0F23"
-    android:fillViewport="true">
-
+    android:background="#F5F7FA"
+    android:id="@+id/main"
+    android:padding="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:orientation="vertical">
 
-        <!-- App Header Section -->
-        <com.google.android.material.card.MaterialCardView
+        <!-- ================= REGISTRATION FORM ================= -->
+        <LinearLayout
+            android:id="@+id/layoutRegistrationForm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="8dp"
-            app:cardBackgroundColor="@android:color/transparent"
-            app:strokeColor="#4DFFFFFF"
-            app:strokeWidth="1dp">
+            android:orientation="vertical">
 
-            <LinearLayout
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
+                android:id="@+id/cardRegistration"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="24dp"
-                android:gravity="center">
+                app:cardCornerRadius="20dp"
+                app:cardElevation="10dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#E0E0E0"
+                android:layout_marginBottom="12dp">
 
-                <!-- App Name -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Welcome Organizer"
-                    android:textColor="#FFFFFF"
-                    android:textSize="42sp"
-                    android:textStyle="bold"
-                    android:fontFamily="sans-serif-light"
-                    android:letterSpacing="0.1"/>
-
-                <!-- Tagline -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Your Local Events Streaming Platform"
-                    android:textColor="#B3FFFFFF"
-                    android:textSize="14sp"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center"/>
-
-                <!-- Stats Row - NO ICONS -->
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="16dp"
-                    android:gravity="center">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="500+ Events"
-                        android:textColor="#80FFFFFF"
-                        android:textSize="12sp"
-                        android:layout_marginEnd="16dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="10K+ Users"
-                        android:textColor="#80FFFFFF"
-                        android:textSize="12sp"/>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-
-
-        <!-- Host Registration Section - NO ICONS -->
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="8dp"
-            app:cardBackgroundColor="#1AFFFFFF"
-            app:strokeColor="#4DFFFFFF"
-            app:strokeWidth="1dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="24dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="register as organiser"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="8dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Host your events, tournaments, shows and reach local audience"
-                    android:textColor="#B3FFFFFF"
-                    android:textSize="14sp"
-                    android:layout_marginBottom="20dp"/>
-
+                <!-- IMPORTANT: padding INSIDE card -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center">
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
-                    <!-- Manage Events Button - NO ICON -->
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/registerashost"
-                        android:layout_width="0dp"
-                        android:layout_height="56dp"
-                        android:layout_weight="1"
-                        android:layout_marginEnd="8dp"
-                        android:text="register as host"
-                        android:visibility="gone"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp"
-                        app:cornerRadius="12dp"
-                        app:backgroundTint="#4A90E2"
-                        app:elevation="4dp"/>
+                    <!-- TITLE -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Organizer Registration"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:textColor="#1A237E"
+                        android:gravity="center"
+                        android:paddingBottom="16dp" />
 
-                    <!-- Register Button - NO ICON -->
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/edithost"
-                        android:layout_width="0dp"
-                        android:layout_height="56dp"
-                        android:layout_weight="1"
-                        android:layout_marginStart="8dp"
-                        android:text="edithost"
-                        android:visibility="gone"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp"
-                        app:cornerRadius="12dp"
-                        app:backgroundTint="#34A853"
-                        app:elevation="4dp"/>
-                    <!-- Signout btn - NO ICON -->
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnSignOut"
-                        android:layout_width="0dp"
-                        android:layout_height="56dp"
-                        android:layout_weight="1"
-                        android:layout_marginStart="8dp"
-                        android:text="Sign out"
-                        android:visibility="gone"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp"
-                        app:cornerRadius="12dp"
-                        app:backgroundTint="#34A853"
-                        app:elevation="4dp"/>
+                    <!-- Institution / Event Name -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:boxBackgroundMode="outline"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        android:hint="Institution / Event / Program Name">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etInstitutionName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Organizer Name -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:boxBackgroundMode="outline"
+                        android:hint="Organizer / Host Name">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etOrganizerName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Contact -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:boxBackgroundMode="outline"
+                        android:hint="Contact / Address">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etContact"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minLines="2" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- CATEGORY -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Category (Select One)"
+                        android:textStyle="bold"
+                        android:textColor="#333333"
+                        android:layout_marginTop="16dp" />
+
+                    <RadioGroup
+                        android:id="@+id/rgCategory"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <RadioButton
+                            android:text="Education Institute" />
+
+                        <RadioButton
+                            android:text="Cricket Tournament" />
+
+                        <RadioButton
+                            android:text="Mahotsav / Stage Program" />
+
+                        <RadioButton
+                            android:text="Artist / Influencer" />
+
+                        <RadioButton
+                            android:text="Other Program" />
+                    </RadioGroup>
+
+                    <!-- DECLARATION -->
+                    <CheckBox
+                        android:id="@+id/cbDeclaration"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:textColor="#444444"
+                        android:text="I declare that all displayed content is my responsibility. I confirm that I have read and agree to follow the app’s Terms &amp; Conditions." />
+
+                    <!-- SUBMIT -->
+                    <Button
+                        android:id="@+id/btnSubmit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Register as Host"
+                        android:textColor="@android:color/white"
+                        android:backgroundTint="#3949AB"
+                        android:layout_marginTop="16dp"
+                        android:enabled="false"
+                        android:alpha="0.5" />
 
                 </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
 
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+        <!-- ================= MYMANCH ID ================= -->
+        <TextView
+            android:id="@+id/tvMyManchId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MYMANCH ID: 12345678"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#2E7D32"
+            android:gravity="center"
+            android:layout_marginTop="12dp"
+            android:visibility="gone" />
 
+        <!-- ================= DASHBOARD BUTTONS ================= -->
+        <Button
+            android:id="@+id/btnManageDashboard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Manage Your Dashboard"
+            android:backgroundTint="#00897B"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="12dp"
+            android:visibility="gone" />
 
+        <Button
+            android:id="@+id/btnUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Update Details"
+            android:backgroundTint="#F9A825"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="8dp"
+            android:visibility="gone" />
 
-
-
-
-
-
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delete Organizer"
+            android:backgroundTint="#D32F2F"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="8dp"
+            android:visibility="gone" />
 
     </LinearLayout>
-
-</androidx.core.widget.NestedScrollView>
+</ScrollView>

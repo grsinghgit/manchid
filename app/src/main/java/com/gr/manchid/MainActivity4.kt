@@ -1,109 +1,239 @@
 package com.gr.manchid
 
+import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
-import android.widget.Button
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
+import com.gr.manchid.utils.OrgManager
 
 class MainActivity4 : AppCompatActivity() {
 
+    // Firebase
     private lateinit var auth: FirebaseAuth
-    private lateinit var registerAsOrgBtn: Button
-    private lateinit var db: FirebaseFirestore
+
+    // Views
+    private lateinit var cardRegistration: View
+
+    private lateinit var etInstitution: EditText
+    private lateinit var etOrganizer: EditText
+    private lateinit var etContact: EditText
+    private lateinit var rgCategory: RadioGroup
+    private lateinit var cbDeclaration: CheckBox
+
+    private lateinit var btnSubmit: Button
+    private lateinit var btnDashboard: Button
+    private lateinit var btnUpdate: Button
+    private lateinit var btnDelete: Button
+    private lateinit var tvMyManchId: TextView
+
+    private var mymanchId: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main4)
 
-        registerAsOrgBtn = findViewById(R.id.registerashost)
-        registerAsOrgBtn.visibility = View.GONE
-
+        // ================================
+        // INIT
+        // ================================
         auth = FirebaseAuth.getInstance()
-        db = FirebaseFirestore.getInstance()
-
-        val currentUser = auth.currentUser
-        if (currentUser == null) {
-            Toast.makeText(this, "Not signed in", Toast.LENGTH_SHORT).show()
+        val user = auth.currentUser ?: run {
             finish()
             return
         }
 
-        val googleUid = currentUser.uid
+        bindViews()
+        attachValidation()
 
-        // 🔍 CHECK: Is this UID already an organizer?
-        db.collection("organizers")
-            .document(googleUid)
-            .get()
-            .addOnSuccessListener { doc ->
-                if (doc.exists()) {
-                    // Organizer already registered
-                    Toast.makeText(
-                        this,
-                        "Already registered as organizer",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                } else {
-                    // Not organizer → show button
-                    registerAsOrgBtn.visibility = View.VISIBLE
-                }
+        // ================================
+        // CHECK ORGANIZER STATUS
+        // ================================
+        OrgManager.checkOrganizer(user.uid) { exists, id ->
+            if (exists && id != null) {
+                // already registered
+                mymanchId = id
+                showRegisteredUI(id)
+            } else {
+                // new organizer
+                showRegistrationUI()
             }
-            .addOnFailureListener {
-                Toast.makeText(this, "Error checking organizer", Toast.LENGTH_SHORT).show()
-            }
+        }
 
-        // 🔘 Register button click
-        registerAsOrgBtn.setOnClickListener {
-            registerOrganizer(googleUid)
+        // ================================
+        // SUBMIT
+        // ================================
+        btnSubmit.setOnClickListener {
+            registerOrganizer(user.uid)
+        }
+
+        // ================================
+        // DASHBOARD
+        // ================================
+        btnDashboard.setOnClickListener {
+            startActivity(
+                Intent(this, MainActivity2::class.java)
+            )
+        }
+
+        // ================================
+        // UPDATE
+        // ================================
+        btnUpdate.setOnClickListener {
+            updateOrganizer(user.uid)
+        }
+
+        // ================================
+        // DELETE
+        // ================================
+        btnDelete.setOnClickListener {
+            deleteOrganizer(user.uid)
         }
     }
 
     // ================================
-    // ORGANIZER REGISTRATION LOGIC
+    // VIEW BINDING
     // ================================
-    private fun registerOrganizer(googleUid: String) {
+    private fun bindViews() {
+        etInstitution = findViewById(R.id.etInstitutionName)
+        etOrganizer = findViewById(R.id.etOrganizerName)
+        etContact = findViewById(R.id.etContact)
+        rgCategory = findViewById(R.id.rgCategory)
+        cbDeclaration = findViewById(R.id.cbDeclaration)
+        cardRegistration = findViewById(R.id.cardRegistration)
 
-        val mymanchId = (10000000..99999999).random().toString()
 
-        val organizerRef = db.collection("organizers").document(googleUid)
-        val mymanchRef = db.collection("mymanch").document(mymanchId)
+        btnSubmit = findViewById(R.id.btnSubmit)
+        btnDashboard = findViewById(R.id.btnManageDashboard)
+        btnUpdate = findViewById(R.id.btnUpdate)
+        btnDelete = findViewById(R.id.btnDelete)
+        tvMyManchId = findViewById(R.id.tvMyManchId)
 
-        // Check MyManch ID uniqueness
-        mymanchRef.get().addOnSuccessListener { doc ->
-            if (doc.exists()) {
-                // Retry if ID already used
-                registerOrganizer(googleUid)
-            } else {
+        btnSubmit.isEnabled = false
+        btnSubmit.alpha = 0.5f
+    }
 
-                val batch = db.batch()
-
-                // 1️⃣ Organizer private profile
-                batch.set(
-                    organizerRef,
-                    mapOf(
-                        "createdAt" to System.currentTimeMillis()
-                    )
-                )
-
-                // 2️⃣ Public MyManch lookup
-                batch.set(
-                    mymanchRef,
-                    mapOf(
-                        "organizerUid" to googleUid
-                    )
-                )
-
-                batch.commit().addOnSuccessListener {
-                    Toast.makeText(
-                        this,
-                        "Organizer registered successfully",
-                        Toast.LENGTH_LONG
-                    ).show()
-                    registerAsOrgBtn.visibility = View.GONE
-                }
-            }
+    // ================================
+    // TEXT WATCHER (FIXED)
+    // ================================
+    private val formWatcher = object : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+        override fun afterTextChanged(s: Editable?) {}
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            validateForm()
         }
+    }
+
+    private fun attachValidation() {
+        etInstitution.addTextChangedListener(formWatcher)
+        etOrganizer.addTextChangedListener(formWatcher)
+        etContact.addTextChangedListener(formWatcher)
+
+        rgCategory.setOnCheckedChangeListener { _, _ -> validateForm() }
+        cbDeclaration.setOnCheckedChangeListener { _, _ -> validateForm() }
+    }
+
+    // ================================
+    // VALIDATION
+    // ================================
+    private fun validateForm() {
+        val valid = etInstitution.text.isNotBlank()
+                && etOrganizer.text.isNotBlank()
+                && etContact.text.isNotBlank()
+                && rgCategory.checkedRadioButtonId != -1
+                && cbDeclaration.isChecked
+
+        btnSubmit.isEnabled = valid
+        btnSubmit.alpha = if (valid) 1f else 0.5f
+    }
+
+    // ================================
+    // REGISTER
+    // ================================
+    private fun registerOrganizer(uid: String) {
+
+        val category = findViewById<RadioButton>(
+            rgCategory.checkedRadioButtonId
+        ).text.toString()
+
+        val data = mapOf(
+            "institutionName" to etInstitution.text.toString(),
+            "organizerName" to etOrganizer.text.toString(),
+            "contact" to etContact.text.toString(),
+            "category" to category
+        )
+
+        OrgManager.registerOrganizer(
+            uid,
+            data,
+            onSuccess = {
+                mymanchId = it
+                showRegisteredUI(it)
+            },
+            onError = {
+                Toast.makeText(this, "Registration failed", Toast.LENGTH_SHORT).show()
+            }
+        )
+    }
+
+    // ================================
+    // UPDATE
+    // ================================
+    private fun updateOrganizer(uid: String) {
+        val data = mapOf(
+            "institutionName" to etInstitution.text.toString(),
+            "organizerName" to etOrganizer.text.toString(),
+            "contact" to etContact.text.toString()
+        )
+
+        OrgManager.updateOrganizer(
+            uid,
+            data,
+            onSuccess = {
+                Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show()
+            },
+            onError = {
+                Toast.makeText(this, "Update failed", Toast.LENGTH_SHORT).show()
+            }
+        )
+    }
+
+    // ================================
+    // DELETE
+    // ================================
+    private fun deleteOrganizer(uid: String) {
+        val id = mymanchId ?: return
+
+        OrgManager.deleteOrganizer(
+            uid,
+            id,
+            onSuccess = {
+                recreate()
+            },
+            onError = {
+                Toast.makeText(this, "Delete failed", Toast.LENGTH_SHORT).show()
+            }
+        )
+    }
+
+    // ================================
+    // UI STATES
+    // ================================
+    private fun showRegisteredUI(id: String) {
+
+        cardRegistration.visibility = View.GONE
+        tvMyManchId.text = "MYMANCH ID: $id"
+        tvMyManchId.visibility = View.VISIBLE
+
+        btnDashboard.visibility = View.VISIBLE
+        btnUpdate.visibility = View.VISIBLE
+        btnDelete.visibility = View.VISIBLE
+        btnSubmit.visibility = View.GONE
+    }
+
+    private fun showRegistrationUI() {
+        btnSubmit.visibility = View.VISIBLE
     }
 }
