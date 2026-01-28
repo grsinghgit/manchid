@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         manageeventbtn = findViewById<Button>(R.id.btnManageEvents)
 
         manageeventbtn.setOnClickListener {
-            val intent = Intent(this, MainActivity3::class.java)
+            val intent = Intent(this, MainActivity4::class.java)
             startActivity(intent)
         }
         // third activity
@@ -86,7 +86,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-            val intent = Intent(this, MainActivity2::class.java)
+            val intent = Intent(this, MainActivity5::class.java)
 
             intent.putExtra("MY_DATA", myVar)
 

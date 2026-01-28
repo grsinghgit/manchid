@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:id="@+id/main"
+    android:layout_height="match_parent"
+    android:background="#0F0F23"
+    android:fillViewport="true">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- App Header Section -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:strokeColor="#4DFFFFFF"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp"
+                android:gravity="center">
+
+                <!-- App Name -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Welcome Organizer"
+                    android:textColor="#FFFFFF"
+                    android:textSize="42sp"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-light"
+                    android:letterSpacing="0.1"/>
+
+                <!-- Tagline -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Your Local Events Streaming Platform"
+                    android:textColor="#B3FFFFFF"
+                    android:textSize="14sp"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"/>
+
+                <!-- Stats Row - NO ICONS -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="500+ Events"
+                        android:textColor="#80FFFFFF"
+                        android:textSize="12sp"
+                        android:layout_marginEnd="16dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10K+ Users"
+                        android:textColor="#80FFFFFF"
+                        android:textSize="12sp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+
+        <!-- Host Registration Section - NO ICONS -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="#1AFFFFFF"
+            app:strokeColor="#4DFFFFFF"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="register as organiser"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Host your events, tournaments, shows and reach local audience"
+                    android:textColor="#B3FFFFFF"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="20dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <!-- Manage Events Button - NO ICON -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/registerashost"
+                        android:layout_width="0dp"
+                        android:layout_height="56dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="8dp"
+                        android:text="register as host"
+                        android:visibility="gone"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        app:cornerRadius="12dp"
+                        app:backgroundTint="#4A90E2"
+                        app:elevation="4dp"/>
+
+                    <!-- Register Button - NO ICON -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/edithost"
+                        android:layout_width="0dp"
+                        android:layout_height="56dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="8dp"
+                        android:text="edithost"
+                        android:visibility="gone"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        app:cornerRadius="12dp"
+                        app:backgroundTint="#34A853"
+                        app:elevation="4dp"/>
+                    <!-- Signout btn - NO ICON -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnSignOut"
+                        android:layout_width="0dp"
+                        android:layout_height="56dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="8dp"
+                        android:text="Sign out"
+                        android:visibility="gone"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        app:cornerRadius="12dp"
+                        app:backgroundTint="#34A853"
+                        app:elevation="4dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+
+
+
+
+
+
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
