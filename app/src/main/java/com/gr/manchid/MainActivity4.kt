@@ -6,6 +6,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.gr.manchid.utils.OrgManager
@@ -51,16 +52,22 @@ class MainActivity4 : AppCompatActivity() {
         // ================================
         // CHECK ORGANIZER STATUS
         // ================================
+
+
         OrgManager.checkOrganizer(user.uid) { exists, id ->
-            if (exists && id != null) {
-                // already registered
-                mymanchId = id
-                showRegisteredUI(id)
-            } else {
-                // new organizer
-                showRegistrationUI()
+
+            when {
+                exists && !id.isNullOrEmpty() -> {
+                    mymanchId = id
+                    showRegisteredUI(id)
+                }
+
+                else -> {
+                    showRegistrationUI()
+                }
             }
         }
+
 
         // ================================
         // SUBMIT
@@ -73,9 +80,7 @@ class MainActivity4 : AppCompatActivity() {
         // DASHBOARD
         // ================================
         btnDashboard.setOnClickListener {
-            startActivity(
-                Intent(this, MainActivity2::class.java)
-            )
+            handleManageDashboardClick()
         }
 
         // ================================
@@ -89,7 +94,7 @@ class MainActivity4 : AppCompatActivity() {
         // DELETE
         // ================================
         btnDelete.setOnClickListener {
-            deleteOrganizer(user.uid)
+            showDeleteConfirmationDialog()
         }
     }
 
@@ -203,7 +208,8 @@ class MainActivity4 : AppCompatActivity() {
     // ================================
     // DELETE
     // ================================
-    private fun deleteOrganizer(uid: String) {
+    private fun deleteOrganizer() {
+        val uid = auth.currentUser?.uid ?: return
         val id = mymanchId ?: return
 
         OrgManager.deleteOrganizer(
@@ -212,11 +218,12 @@ class MainActivity4 : AppCompatActivity() {
             onSuccess = {
                 recreate()
             },
-            onError = {
+            onFailure = {
                 Toast.makeText(this, "Delete failed", Toast.LENGTH_SHORT).show()
             }
         )
     }
+
 
     // ================================
     // UI STATES
@@ -235,5 +242,104 @@ class MainActivity4 : AppCompatActivity() {
 
     private fun showRegistrationUI() {
         btnSubmit.visibility = View.VISIBLE
+        btnDelete.visibility = View.GONE
     }
+
+    // delete confirmation dialogue
+    private fun showDeleteConfirmationDialog() {
+
+        AlertDialog.Builder(this)
+            .setTitle("Delete Organizer")
+            .setMessage(
+                "Are you sure you want to delete this organizer?\n\n" +
+                        "• Your MyManch ID will be released\n" +
+                        "• This action cannot be undone"
+            )
+            .setPositiveButton("YES, DELETE") { _, _ ->
+                deleteOrganizer()
+            }
+            .setNegativeButton("CANCEL", null)
+            .setCancelable(true)
+            .show()
+    }
+
+
+    // ================================
+// HANDLE DASHBOARD FLOW
+// ================================
+    private fun handleManageDashboardClick() {
+
+        val uid = auth.currentUser?.uid ?: return
+        btnDashboard.isEnabled = false
+
+        // 🔥 Step 1: ensure orgData exists (create only once)
+        OrgManager.createOrgDataIfNotExists(
+            uid = uid,
+            onSuccess = {
+
+                // 🔥 Step 2: ensure dashboard meta (merge-safe)
+                OrgManager.initializeDashboard(
+                    uid = uid,
+                    onSuccess = {
+                        openDashboard()   // 👉 Activity2
+                    },
+                    onFailure = {
+                        btnDashboard.isEnabled = true
+                        showToast(it)
+                    }
+                )
+            },
+            onFailure = {
+                btnDashboard.isEnabled = true
+                showToast(it)
+            }
+        )
+    }
+
+    // ================================
+// INITIALIZE DASHBOARD (ONCE)
+// ================================
+    private fun initializeDashboard(uid: String) {
+
+        OrgManager.initializeDashboard(
+            uid = uid,
+            onSuccess = {
+                openDashboard()
+            },
+            onFailure = {
+                btnDashboard.isEnabled = true
+                showToast(it)
+            }
+        )
+    }
+
+
+    // ================================
+// OPEN DASHBOARD
+// ================================
+    private fun openDashboard() {
+        btnDashboard.isEnabled = true
+
+        startActivity(
+            Intent(this, MainActivity2::class.java)
+        )
+    }
+
+
+    // ================================
+// TOAST HELPER
+// ================================
+    private fun showToast(msg: String) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+    }
+
+
+
+
+
+
+
+
+
+    //last class bracket
 }
