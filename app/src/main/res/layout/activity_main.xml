@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:id="@+id/main"
     android:layout_height="match_parent"
-    android:background="#0F0F23"
+    android:background="#D55F73CE"
     android:fillViewport="true">
 
     <LinearLayout

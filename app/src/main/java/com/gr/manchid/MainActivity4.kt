@@ -18,6 +18,7 @@ class MainActivity4 : AppCompatActivity() {
 
     // Views
     private lateinit var cardRegistration: View
+    private lateinit var progressbar : ProgressBar
 
     private lateinit var etInstitution: EditText
     private lateinit var etOrganizer: EditText
@@ -108,6 +109,7 @@ class MainActivity4 : AppCompatActivity() {
         rgCategory = findViewById(R.id.rgCategory)
         cbDeclaration = findViewById(R.id.cbDeclaration)
         cardRegistration = findViewById(R.id.cardRegistration)
+        progressbar = findViewById(R.id.progressBar)
 
 
         btnSubmit = findViewById(R.id.btnSubmit)
@@ -233,6 +235,7 @@ class MainActivity4 : AppCompatActivity() {
         cardRegistration.visibility = View.GONE
         tvMyManchId.text = "MYMANCH ID: $id"
         tvMyManchId.visibility = View.VISIBLE
+        progressbar.visibility = View.GONE
 
         btnDashboard.visibility = View.VISIBLE
         btnUpdate.visibility = View.VISIBLE
