@@ -3,22 +3,59 @@
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="12dp"
-    app:cardCornerRadius="18dp"
-    app:cardElevation="6dp"
-    app:cardUseCompatPadding="true"
-    app:cardBackgroundColor="#F3F6FB">
+    android:padding="16dp"
 
-    <TextView
-        android:id="@+id/tvTitle"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="8dp"
+    app:cardBackgroundColor="#5C6BC0">
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Feature"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        android:textColor="@android:color/black"/>
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Title"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tvF1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Feature 1"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/tvF2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Feature 2"
+            android:textColor="@android:color/white"/>
+
+        <TextView
+            android:id="@+id/tvF3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Feature 3"
+            android:textColor="@android:color/white"/>
+
+        <TextView
+            android:id="@+id/tvF4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Feature 4"
+            android:textColor="@android:color/white"/>
+
+    </LinearLayout>
 
 </com.google.android.material.card.MaterialCardView>
