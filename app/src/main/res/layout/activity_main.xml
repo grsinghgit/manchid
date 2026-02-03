@@ -1,517 +1,233 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:id="@+id/main"
     android:layout_height="match_parent"
-    android:background="#D55F73CE"
-    android:fillViewport="true">
+    android:orientation="vertical"
+    android:background="#FFFFFF">
 
+    <!-- 🔴 TOP BAR -->
     <LinearLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#6200EE"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Manchid"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center"/>
+    </LinearLayout>
+
+
+
+
+
+    <!-- Host ID Input Card -->
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:layout_margin="8dp"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:strokeColor="#E0E0E0"
+        app:strokeWidth="1dp">
 
-        <!-- App Header Section -->
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="8dp"
-            app:cardBackgroundColor="@android:color/transparent"
-            app:strokeColor="#4DFFFFFF"
-            app:strokeWidth="1dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="24dp"
-                android:gravity="center">
-
-                <!-- App Name -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="MyManch"
-                    android:textColor="#FFFFFF"
-                    android:textSize="42sp"
-                    android:textStyle="bold"
-                    android:fontFamily="sans-serif-light"
-                    android:letterSpacing="0.1"/>
-
-                <!-- Tagline -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Your Local Events Streaming Platform"
-                    android:textColor="#B3FFFFFF"
-                    android:textSize="14sp"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center"/>
-
-                <!-- Stats Row - NO ICONS -->
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="16dp"
-                    android:gravity="center">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="500+ Events"
-                        android:textColor="#80FFFFFF"
-                        android:textSize="12sp"
-                        android:layout_marginEnd="16dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="10K+ Users"
-                        android:textColor="#80FFFFFF"
-                        android:textSize="12sp"/>
-
-                </LinearLayout>
-
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- Features Horizontal ScrollView - NO ICON IN TITLE -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Features"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="12dp"/>
-
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:scrollbars="none">
-
-            <LinearLayout
-                android:id="@+id/featuresContainer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <!-- Feature 1: Cricket Tournament - NO IMAGE ICON -->
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="280dp"
-                    android:layout_height="180dp"
-                    android:layout_marginEnd="12dp"
-                    app:cardCornerRadius="24dp"
-                    app:cardElevation="12dp"
-                    app:cardBackgroundColor="#E63946"
-                    android:foreground="?android:attr/selectableItemBackground">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:padding="20dp"
-                        android:gravity="center">
-
-                        <!-- NO ImageView - REMOVED -->
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Cricket Tournament"
-                            android:textColor="#FFFFFF"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            android:layout_marginTop="12dp"
-                            android:gravity="center"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Stream &amp; Manage Local Matches"
-                            android:textColor="#B3FFFFFF"
-                            android:textSize="12sp"
-                            android:gravity="center"
-                            android:layout_marginTop="4dp"/>
-
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <!-- Feature 2: Schedule & Events - NO IMAGE ICON -->
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="280dp"
-                    android:layout_height="180dp"
-                    android:layout_marginEnd="12dp"
-                    app:cardCornerRadius="24dp"
-                    app:cardElevation="12dp"
-                    app:cardBackgroundColor="#1D3557"
-                    android:foreground="?android:attr/selectableItemBackground">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:padding="20dp"
-                        android:gravity="center">
-
-                        <!-- NO ImageView - REMOVED -->
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Schedule &amp; Details"
-                            android:textColor="#FFFFFF"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            android:layout_marginTop="12dp"
-                            android:gravity="center"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="View Event Schedule &amp; Player Info"
-                            android:textColor="#B3FFFFFF"
-                            android:textSize="12sp"
-                            android:gravity="center"
-                            android:layout_marginTop="4dp"/>
-
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <!-- Feature 3: Stage Shows - NO IMAGE ICON -->
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="280dp"
-                    android:layout_height="180dp"
-                    android:layout_marginEnd="12dp"
-                    app:cardCornerRadius="24dp"
-                    app:cardElevation="12dp"
-                    app:cardBackgroundColor="#E9C46A"
-                    android:foreground="?android:attr/selectableItemBackground">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:padding="20dp"
-                        android:gravity="center">
-
-                        <!-- NO ImageView - REMOVED -->
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Stage Shows &amp; Festivals"
-                            android:textColor="#000000"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            android:layout_marginTop="12dp"
-                            android:gravity="center"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Local Cultural Events Streaming"
-                            android:textColor="#80000000"
-                            android:textSize="12sp"
-                            android:gravity="center"
-                            android:layout_marginTop="4dp"/>
-
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <!-- Feature 4: Education - NO IMAGE ICON -->
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="280dp"
-                    android:layout_height="180dp"
-                    android:layout_marginEnd="12dp"
-                    app:cardCornerRadius="24dp"
-                    app:cardElevation="12dp"
-                    app:cardBackgroundColor="#2A9D8F"
-                    android:foreground="?android:attr/selectableItemBackground">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:padding="20dp"
-                        android:gravity="center">
-
-                        <!-- NO ImageView - REMOVED -->
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Live Classes"
-                            android:textColor="#FFFFFF"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            android:layout_marginTop="12dp"
-                            android:gravity="center"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Teachers &amp; Educational Streaming"
-                            android:textColor="#B3FFFFFF"
-                            android:textSize="12sp"
-                            android:gravity="center"
-                            android:layout_marginTop="4dp"/>
-
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <!-- Feature 5: Recorded Videos - NO IMAGE ICON -->
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="280dp"
-                    android:layout_height="180dp"
-                    app:cardCornerRadius="24dp"
-                    app:cardElevation="12dp"
-                    app:cardBackgroundColor="#9D4EDD"
-                    android:foreground="?android:attr/selectableItemBackground">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:padding="20dp"
-                        android:gravity="center">
-
-                        <!-- NO ImageView - REMOVED -->
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Recorded Videos"
-                            android:textColor="#FFFFFF"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            android:layout_marginTop="12dp"
-                            android:gravity="center"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Watch Live &amp; Archived Events"
-                            android:textColor="#B3FFFFFF"
-                            android:textSize="12sp"
-                            android:gravity="center"
-                            android:layout_marginTop="4dp"/>
-
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-            </LinearLayout>
-        </HorizontalScrollView>
-
-        <!-- Host Registration Section - NO ICONS -->
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="8dp"
-            app:cardBackgroundColor="#1AFFFFFF"
-            app:strokeColor="#4DFFFFFF"
-            app:strokeWidth="1dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="24dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Are you an Event Organizer?"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="8dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Host your events, tournaments, shows and reach local audience"
-                    android:textColor="#B3FFFFFF"
-                    android:textSize="14sp"
-                    android:layout_marginBottom="20dp"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center">
-
-                    <!-- Manage Events Button - NO ICON -->
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnManageEvents"
-                        android:layout_width="0dp"
-                        android:layout_height="56dp"
-                        android:layout_weight="1"
-                        android:layout_marginEnd="8dp"
-                        android:text="Manage Events"
-                        android:visibility="gone"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp"
-                        app:cornerRadius="12dp"
-                        app:backgroundTint="#4A90E2"
-                        app:elevation="4dp"/>
-
-                    <!-- Register Button - NO ICON -->
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnRegisterHost"
-                        android:layout_width="0dp"
-                        android:layout_height="56dp"
-                        android:layout_weight="1"
-                        android:layout_marginStart="8dp"
-                        android:text="Register Now"
-                        android:visibility="gone"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp"
-                        app:cornerRadius="12dp"
-                        app:backgroundTint="#34A853"
-                        app:elevation="4dp"/>
-                    <!-- Signout btn - NO ICON -->
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnSignOut"
-                        android:layout_width="0dp"
-                        android:layout_height="56dp"
-                        android:layout_weight="1"
-                        android:layout_marginStart="8dp"
-                        android:text="Sign out"
-                        android:visibility="gone"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp"
-                        app:cornerRadius="12dp"
-                        app:backgroundTint="#34A853"
-                        app:elevation="4dp"/>
-
-                </LinearLayout>
-
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- Event ID Entry Section - NO ICONS -->
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="8dp"
-            app:cardBackgroundColor="#1AFFFFFF"
-            app:strokeColor="#4DFFFFFF"
-            app:strokeWidth="1dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="24dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Join an Event"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="8dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Enter Event ID provided by organizer"
-                    android:textColor="#B3FFFFFF"
-                    android:textSize="14sp"
-                    android:layout_marginBottom="16dp"/>
-
-                <!-- Event ID Input -->
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Event ID"
-                    app:hintTextColor="#B3FFFFFF"
-                    app:boxBackgroundMode="outline"
-                    app:boxBackgroundColor="#1AFFFFFF"
-                    app:boxStrokeColor="#4DFFFFFF"
-                    app:boxCornerRadiusBottomEnd="12dp"
-                    app:boxCornerRadiusBottomStart="12dp"
-                    app:boxCornerRadiusTopEnd="12dp"
-                    app:boxCornerRadiusTopStart="12dp"
-                    app:endIconMode="clear_text"
-                    app:endIconTint="#FFFFFF"
-                    app:counterMaxLength="15"
-                    app:counterEnabled="true">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/mymanchidtxt"
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:inputType="text"
-                        android:maxLength="95"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="16dp"/>
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <!-- Submit Button - NO ICON -->
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnSubmitEventId"
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:layout_marginTop="20dp"
-                    android:text="Join Event"
-                    android:textColor="#FFFFFF"
-                    android:textSize="18sp"
-                    app:cornerRadius="12dp"
-                    app:backgroundTint="#FF6B6B"
-                    app:elevation="8dp"/>
-
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- Bottom Footer - NO ICONS -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="32dp"
-            android:gravity="center">
+            android:padding="5dp">
 
-            <!-- GR Karai -->
+            <!-- Title -->
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/titleTextView2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Copyright 2024 MyManch | GR Kararwai"
-                android:textColor="#80FFFFFF"
-                android:textSize="12sp"
-                android:layout_marginBottom="12dp"/>
+                android:text="Enter Your Host ID"
+                android:textColor="#333333"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_marginBottom="16dp" />
 
-            <!-- Disclaimer Button - NO ICON -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnDisclaimer"
-                android:layout_width="wrap_content"
+            <!-- Input Field and Button Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Disclaimer"
-                android:textColor="#B3FFFFFF"
-                android:textSize="14sp"
-                app:cornerRadius="20dp"
-                app:backgroundTint="#1AFFFFFF"
-                app:strokeColor="#4DFFFFFF"
-                app:strokeWidth="1dp"
-                app:elevation="0dp"/>
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <!-- Host ID Input Field -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/hostIdInputLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="12dp"
+                    app:hintEnabled="false"
+                    app:boxBackgroundMode="outline"
+                    app:boxCornerRadiusTopStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusBottomEnd="8dp"
+                    app:boxStrokeColor="#4CAF50"
+                    app:endIconMode="clear_text"
+                    app:endIconTint="#666666">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/hostIdEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="e.g., ABC-123-XYZ"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:textSize="14sp"
+                        android:textColor="#333333" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Connect Button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/connectButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="Connectus"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:backgroundTint="#4CAF50"
+                    app:cornerRadius="8dp"
+                    app:icon="@drawable/ic_link"
+                    app:iconTint="#FFFFFF"
+                    app:iconSize="20dp"
+                    app:iconPadding="4dp" />
+
+            </LinearLayout>
+
+            <!-- Optional: Help Text -->
+            <TextView
+                android:id="@+id/helpTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Enter your unique Host ID to establish connection"
+                android:textColor="#666666"
+                android:textSize="12sp"
+                android:gravity="center" />
 
         </LinearLayout>
 
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <!-- Gradient Material Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:background="@drawable/gradient_bg">
+
+            <!-- First Text View -->
+            <TextView
+                android:id="@+id/titleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Connect Your Local Audience"
+                android:textColor="#FFFFFF"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:lineSpacingExtra="4dp" />
+
+            <!-- Second Text View -->
+            <TextView
+                android:id="@+id/subtitleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="12dp"
+                android:text="Build meaningful connections with people in your community"
+                android:textColor="#E0FFFFFF"
+                android:textSize="16sp"
+                android:lineSpacingExtra="4dp" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="com.gr.manchid.ui.HomeFragment" />
+
+
+
+    <!-- 🔵 BOTTOM BAR -->
+    <LinearLayout
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#6200EE"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/homeButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Home"
+            android:textColor="@android:color/white"
+            android:background="?attr/selectableItemBackgroundBorderless"/>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF30"/>
+
+        <Button
+            android:id="@+id/postButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Post"
+            android:textColor="@android:color/white"
+            android:background="?attr/selectableItemBackgroundBorderless"/>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF30"/>
+
+        <Button
+            android:id="@+id/profileButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Profile"
+            android:textColor="@android:color/white"
+            android:background="?attr/selectableItemBackgroundBorderless"/>
+
     </LinearLayout>
 
-</androidx.core.widget.NestedScrollView>
+</LinearLayout>

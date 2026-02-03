@@ -10,6 +10,10 @@ android {
     namespace = "com.gr.manchid"
     compileSdk = 36
 
+    buildFeatures {
+        viewBinding = true
+    }
+
 
 
     kotlinOptions {
@@ -93,6 +97,13 @@ dependencies {
     implementation("com.google.android.gms:play-services-auth:21.1.1")
 
     // Material Components (older but stable version)
+    // view model mvvm
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
+
+    // view pager
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
+    implementation("com.google.android.material:material:1.11.0")
 
 
 }
