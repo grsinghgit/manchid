@@ -7,11 +7,25 @@
     tools:context=".ui.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar"
+            android:visibility="visible"/>
 
 
 
 
-    <androidx.viewpager2.widget.ViewPager2
+
+
+
+        <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/carouselViewPager"
         android:layout_width="match_parent"
         android:layout_height="160dp"
@@ -21,16 +35,6 @@
         android:paddingStart="40dp"
         android:paddingEnd="40dp"/>
 
-
-
-
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="vertical">
 
 
 
@@ -71,20 +75,22 @@
 
                     <!-- Google Sign In -->
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnGoogleSignIn"
+                        android:id="@+id/btnGoogle"
                         android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:layout_weight="1"
                         android:text="Google Sign In"
+                        android:visibility="gone"
                         android:textAllCaps="false"
                         android:layout_marginEnd="6dp"
                         app:cornerRadius="8dp"/>
 
                     <!-- Register Host -->
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnRegisterHost"
+                        android:id="@+id/btnLogout"
                         android:layout_width="0dp"
                         android:layout_height="40dp"
+                        android:visibility="gone"
                         android:layout_weight="1"
                         android:text="Register as Host"
                         android:textAllCaps="false"
