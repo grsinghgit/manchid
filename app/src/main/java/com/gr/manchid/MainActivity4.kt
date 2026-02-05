@@ -324,7 +324,7 @@ class MainActivity4 : AppCompatActivity() {
         btnDashboard.isEnabled = true
 
         startActivity(
-            Intent(this, MainActivity2::class.java)
+            Intent(this, MainActivity5::class.java)
         )
     }
 

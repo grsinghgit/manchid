@@ -1,6 +1,7 @@
 package com.gr.manchid.ui
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -21,12 +22,14 @@ import com.gr.manchid.models.LoginState
 import com.gr.manchid.models.LoginViewModel
 import com.gr.manchid.models.LoginViewModelFactory
 import com.google.firebase.auth.FirebaseAuth
+import com.gr.manchid.MainActivity4
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
     // ================= UI =================
     private lateinit var btnGoogle: MaterialButton
     private lateinit var btnLogout: MaterialButton
+    private lateinit var btnRegister: MaterialButton
     private lateinit var progressBar: View
     private lateinit var viewPager: ViewPager2
 
@@ -122,18 +125,21 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     progressBar.visibility = View.VISIBLE
                     btnGoogle.visibility = View.GONE
                     btnLogout.visibility = View.GONE
+                    btnRegister.visibility = View.GONE
                 }
 
                 is LoginState.LoggedIn -> {
                     progressBar.visibility = View.GONE
                     btnGoogle.visibility = View.GONE
                     btnLogout.visibility = View.VISIBLE
+                    btnRegister.visibility = View.VISIBLE
                 }
 
                 is LoginState.LoggedOut -> {
                     progressBar.visibility = View.GONE
                     btnGoogle.visibility = View.VISIBLE
                     btnLogout.visibility = View.GONE
+                    btnRegister.visibility = View.GONE
                 }
 
                 is LoginState.Error -> {
@@ -157,6 +163,16 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         btnLogout.setOnClickListener {
             viewModel.signOut()
         }
+
+
+        btnRegister.setOnClickListener {
+
+            val intent = Intent(requireContext(), MainActivity4::class.java)
+            startActivity(intent)
+
+        }
+
+
     }
 
     // ================= VIEW BIND =================
@@ -166,6 +182,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         btnLogout = view.findViewById(R.id.btnLogout)
         progressBar = view.findViewById(R.id.progressBar)
         viewPager = view.findViewById(R.id.carouselViewPager)
+        btnRegister = view.findViewById(R.id.btnRegister)
     }
 
     // ================= CAROUSEL =================

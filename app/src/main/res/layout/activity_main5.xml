@@ -1,96 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:id="@+id/main"
     android:layout_height="match_parent"
-    android:background="#0F0F23"
-    android:fillViewport="true">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_margin="5dp"
+    android:padding="5dp"
+    android:background="#F5F6FA">
 
-
+    <!-- ===== TOP COLORFUL BAR ===== -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:background="#6750A4">
 
-    <!-- App Header Section -->
-    <com.google.android.material.card.MaterialCardView
+        <TextView
+            android:id="@+id/txtWelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="8dp"
-        app:cardBackgroundColor="@android:color/transparent"
-        app:strokeColor="#4DFFFFFF"
-        app:strokeWidth="1dp">
+        android:scrollbars="none"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
+        android:background="#F5F6FA">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="24dp"
-            android:gravity="center">
+            android:orientation="horizontal">
 
-            <!-- App Name -->
-            <TextView
+            <!-- Event Schedule -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEvent"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="MyManch"
-                android:textColor="#FFFFFF"
-                android:textSize="42sp"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif-light"
-                android:letterSpacing="0.1"/>
+                android:layout_height="48dp"
+                android:text="Event Schedule"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="13sp"
+                android:layout_margin="6dp"
+                android:paddingStart="18dp"
+                android:paddingEnd="18dp"
+                android:backgroundTint="#6750A4"
+                app:cornerRadius="24dp"/>
 
-            <!-- Tagline -->
-            <TextView
+            <!-- Today Schedule -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnToday"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Your Local Events Streaming Platform"
-                android:textColor="#B3FFFFFF"
-                android:textSize="14sp"
-                android:layout_marginTop="8dp"
-                android:gravity="center"/>
+                android:layout_height="48dp"
+                android:text="Today Schedule"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="13sp"
+                android:layout_margin="6dp"
+                android:paddingStart="18dp"
+                android:paddingEnd="18dp"
+                android:backgroundTint="#03A9F4"
+                app:cornerRadius="24dp"/>
 
-            <!-- Stats Row - NO ICONS -->
-            <LinearLayout
+            <!-- Video / Live -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnVideo"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="16dp"
-                android:gravity="center">
+                android:layout_height="48dp"
+                android:text="Video / Live"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="13sp"
+                android:layout_margin="6dp"
+                android:paddingStart="18dp"
+                android:paddingEnd="18dp"
+                android:backgroundTint="#FF5722"
+                app:cornerRadius="24dp"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="500+ Events"
-                    android:textColor="#80FFFFFF"
-                    android:textSize="12sp"
-                    android:layout_marginEnd="16dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="10K+ Users"
-                    android:textColor="#80FFFFFF"
-                    android:textSize="12sp"/>
-
-            </LinearLayout>
+            <!-- Artist -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnArtist"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="Artist"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="13sp"
+                android:layout_margin="6dp"
+                android:paddingStart="18dp"
+                android:paddingEnd="18dp"
+                android:backgroundTint="#4CAF50"
+                app:cornerRadius="24dp"/>
 
         </LinearLayout>
 
-    </com.google.android.material.card.MaterialCardView>
+    </HorizontalScrollView>
 
 
 
+    <!-- ===== MIDDLE EMPTY SPACE (FRAGMENT AREA) ===== -->
+    <FrameLayout
+        android:id="@+id/eventContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#F5F6FA"/>
 
 
+    <!-- ===== BOTTOM COLORFUL BAR ===== -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="#B69DF8">
 
+        <!-- Future Navigation Buttons Yaha Aayenge -->
 
-
+    </LinearLayout>
 
 </LinearLayout>
-
-</androidx.core.widget.NestedScrollView>

@@ -85,9 +85,21 @@
                         android:layout_marginEnd="6dp"
                         app:cornerRadius="8dp"/>
 
-                    <!-- Register Host -->
+                    <!-- signout-->
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnLogout"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:visibility="gone"
+                        android:layout_weight="1"
+                        android:text="signout"
+                        android:textAllCaps="false"
+                        android:layout_marginStart="6dp"
+                        app:cornerRadius="8dp"/>
+
+                    <!-- Register as Host-->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnRegister"
                         android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:visibility="gone"
