@@ -55,7 +55,7 @@ class EventFragment : Fragment(R.layout.fragment_event) {
 
 
 
-        // ⭐ Load Data
+        // ⭐ Load Data hai
         viewModel.loadMeta(uid)
 
         // ⭐ Observe Data
